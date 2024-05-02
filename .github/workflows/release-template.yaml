@@ -1,0 +1,49 @@
+name: Release Template
+on:
+    workflow_call:
+        inputs:
+          namespace:
+            required: true
+            type: string
+            description: "Namespace to deploy the API"
+          deployment:
+            required: true
+            type: string
+            description: "Deployment to deploy the API"
+          branch:
+            required: true
+            type: string
+            description: "Branch to deploy the API" 
+        secrets:
+          KUBE_CONFIG:
+            required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout base
+        uses: actions/checkout@v4
+        with:
+          ref: base
+          path: base
+      - name: Checkout ${{inputs.deployment}} repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{inputs.branch}}
+          path: ${{inputs.branch}}
+      - name: set k8s context
+        uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - name: install kapp
+        run: |
+          wget -O- https://carvel.dev/install.sh > install.sh
+          chmod +x install.sh
+          ./install.sh
+          kapp version
+      - name: Run API Deployment
+        run: |
+          cd ${{inputs.branch}}/hotel-reservation-api/1.0.0
+          appName=$(echo hotel-reservation-api-1.0.0|md5sum| cut -d ' ' -f 1)
+          kapp -y deploy -a $appName -f <(kustomize build .) -n ${{inputs.namespace}} --labels version=1.0.0
