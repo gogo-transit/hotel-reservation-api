@@ -5,5 +5,5 @@ metadata:
   name: "backend-f3d6786c4f383ffbd7ec8620596811df652dba73-api"
 spec:
   services:
-  - host: "hotel-service.dev-backend.svc.cluster.local"
+  - host: "hotel-service.prod-backend.svc.cluster.local"
     port: 82

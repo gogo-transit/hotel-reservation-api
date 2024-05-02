@@ -10,4 +10,4 @@ metadata:
     managed-by: "apk"
 spec:
   hostnames:
-  - "carbon.super.dev.gw.wso2.com"
+  - "carbon.super.gw.wso2.com"
