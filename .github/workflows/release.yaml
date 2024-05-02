@@ -2,7 +2,7 @@ name: Deploy
 on:
     workflow_dispatch: 
 jobs:
-    Developement:            
+    Dev:            
         environment: Dev
         steps:
          - uses: ./.github/workflows/release-template.yaml
@@ -12,13 +12,13 @@ jobs:
             branch: "dev"
             secrets:
                 KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-    Production:            
+    PROD:            
         environment: PROD
         steps: 
-            uses: ./.github/workflows/release-template.yaml
-            with:
-                namespace: "prod"
-                deployment: "Production"
-                branch: "prod"
-            secrets:
-                KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}            
+         - uses: ./.github/workflows/release-template.yaml
+           with:
+            namespace: "prod"
+            deployment: "Production"
+            branch: "prod"
+           secrets:
+             KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}            
