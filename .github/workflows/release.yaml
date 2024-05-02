@@ -5,16 +5,16 @@ jobs:
     Dev:
       environment: Dev
       uses: ./.github/workflows/release-template.yaml
-        with:
+      with:
          namespace: "dev"
          deployment: "Development"
          branch: "dev"          
-        secrets:
+      secrets:
          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
     PROD:            
       environment: PROD
       uses: ./.github/workflows/release-template.yaml
-        with:
+      with:
          namespace: "prod"
          deployment: "Production"
          branch: "prod"
