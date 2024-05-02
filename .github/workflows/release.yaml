@@ -3,23 +3,22 @@ on:
     workflow_dispatch: 
 jobs:
     Dev:
-        
-        environment: Dev
-        steps:
-            - uses: ./.github/workflows/release-template.yaml
-              with:
-               namespace: "dev"
-               deployment: "Development"
-               branch: "dev"
-              secrets:
-               KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+      environment: Dev
+      steps:
+      - uses: ./.github/workflows/release-template.yaml
+        with:
+         namespace: "dev"
+         deployment: "Development"
+         branch: "dev"          
+        secrets:
+         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
     PROD:            
-        environment: PROD
-        steps: 
-         - uses: ./.github/workflows/release-template.yaml
-           with:
-            namespace: "prod"
-            deployment: "Production"
-            branch: "prod"
-           secrets:
-             KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}            
+      environment: PROD
+      steps: 
+      - uses: ./.github/workflows/release-template.yaml
+        with:
+         namespace: "prod"
+         deployment: "Production"
+         branch: "prod"
+      secrets:
+         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}            
