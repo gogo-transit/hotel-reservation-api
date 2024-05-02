@@ -2,7 +2,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - "../../../bases/hotel-reservation-api/1.0.0"
+  - "../../bases/hotel-reservation-api/1.0.0"
 patches:
   - path: backend-f3d6786c4f383ffbd7ec8620596811df652dba73-api.yaml
   - path: 7416c241a121b844392d447f00ff6709cb9c932b-production-httproute-1.yaml
