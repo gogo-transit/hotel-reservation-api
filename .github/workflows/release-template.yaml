@@ -17,9 +17,6 @@ on:
             required: true
             type: string
             description: "Branch to deploy the API" 
-        secrets:
-          KUBE_CONFIG:
-            required: true
 jobs:
   Deploy:
     environment:
