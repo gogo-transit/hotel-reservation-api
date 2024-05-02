@@ -9,6 +9,8 @@ jobs:
          deployment: "Devlopement"
          branch: "dev"
          environment: "Dev"
+      secrets:
+        KUBE_CONFIG: ${{secrets.KUBE_CONFIG_DEV}}
     PROD:
       needs: [Dev]
       uses: ./.github/workflows/release-template.yaml
@@ -17,3 +19,5 @@ jobs:
          deployment: "Production"
          branch: "prod"
          environment: "PROD"         
+      secrets:
+        KUBE_CONFIG: ${{secrets.KUBE_CONFIG_PROD}}
