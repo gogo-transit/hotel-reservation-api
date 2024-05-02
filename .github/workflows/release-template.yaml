@@ -19,8 +19,7 @@ on:
             description: "Branch to deploy the API" 
 jobs:
   Deploy:
-    environment:
-     name: ${{ inputs.environment }}    
+    environment: ${{ inputs.environment }}    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout base
