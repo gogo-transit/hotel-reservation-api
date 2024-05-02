@@ -4,8 +4,7 @@ on:
 jobs:
     Dev:
       environment: Dev
-      steps:
-      - uses: ./.github/workflows/release-template.yaml
+      uses: ./.github/workflows/release-template.yaml
         with:
          namespace: "dev"
          deployment: "Development"
@@ -14,8 +13,7 @@ jobs:
          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
     PROD:            
       environment: PROD
-      steps: 
-      - uses: ./.github/workflows/release-template.yaml
+      uses: ./.github/workflows/release-template.yaml
         with:
          namespace: "prod"
          deployment: "Production"
