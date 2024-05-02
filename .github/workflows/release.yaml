@@ -4,19 +4,21 @@ on:
 jobs:
     Developement:            
         environment: Dev
-        uses: ./.github/workflows/release-template.yaml
-        with:
+        steps:
+         - uses: ./.github/workflows/release-template.yaml
+           with:
             namespace: "dev"
             deployment: "Developement"
             branch: "dev"
-        secrets:
-            KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+            secrets:
+                KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
     Production:            
-        environment: Prod
-        uses: ./.github/workflows/release-template.yaml
-        with:
-            namespace: "prod"
-            deployment: "Production"
-            branch: "prod"
-        secrets:
-            KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}            
+        environment: PROD
+        steps: 
+            uses: ./.github/workflows/release-template.yaml
+            with:
+                namespace: "prod"
+                deployment: "Production"
+                branch: "prod"
+            secrets:
+                KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}            
