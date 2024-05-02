@@ -8,12 +8,12 @@ jobs:
          namespace: "dev"
          deployment: "Devlopement"
          branch: "dev"
-         environment: "DEV"
+         environment: "Dev"
     PROD:
       needs: [Dev]
       uses: ./.github/workflows/release-template.yaml
       with:
-         namespace: "dev"
-         deployment: "Devlopement"
-         branch: "dev"
-         environment: "DEV"         
+         namespace: "prod"
+         deployment: "Production"
+         branch: "prod"
+         environment: "PROD"         
