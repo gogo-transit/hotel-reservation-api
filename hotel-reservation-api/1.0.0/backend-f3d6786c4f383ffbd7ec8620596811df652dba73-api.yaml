@@ -12,5 +12,5 @@ spec:
   services:
   - host: "hotel-service.backend.svc.cluster.local"
     port: 82
-  basePath: "/"
+  basePath: ""
   protocol: "http"
